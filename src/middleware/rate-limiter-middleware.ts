@@ -20,9 +20,10 @@ const userNameIpLimiterMiddleware = async (
 
 	if (retrySecs > 0) {
 		res.set('X-Retry-After', String(retrySecs));
-		return res
-			.status(429)
-			.send({ success: false, errors: [{ message: 'Too Many Requests' }] });
+		return res.status(429).send({
+			success: false,
+			errors: [{ message: 'Too Many Requests' }],
+		});
 	}
 
 	req.userNameIpKey = userNameIpKey;
@@ -46,9 +47,10 @@ const IpLimiterMiddleware = async (
 
 	if (retrySecs > 0) {
 		res.set('X-Retry-After', String(retrySecs));
-		return res
-			.status(429)
-			.send({ success: false, errors: [{ message: 'Too Many Requests' }] });
+		return res.status(429).send({
+			success: false,
+			errors: [{ message: 'Too Many Requests' }],
+		});
 	}
 
 	return next();

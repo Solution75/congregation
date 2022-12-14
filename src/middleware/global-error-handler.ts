@@ -19,9 +19,10 @@ const globalErrorHandler = (
 	// Non-Custom errors
 
 	logger.error(error);
-	return res
-		.status(500)
-		.send({ errors: [{ message: 'unknown error occurred' }], success: false });
+	return res.status(500).send({
+		errors: [{ message: 'unknown error occurred' }],
+		success: false,
+	});
 };
 
 export default globalErrorHandler;

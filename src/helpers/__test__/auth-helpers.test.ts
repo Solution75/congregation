@@ -5,7 +5,9 @@ describe('Test password reset', () => {
 	const userId = '123456';
 
 	test('should pass', async () => {
-		const resetPasswordUrl = await authHelpers.generateResetPasswordUrl(userId);
+		const resetPasswordUrl = await authHelpers.generateResetPasswordUrl(
+			userId
+		);
 
 		const token = resetPasswordUrl.split('/').at(-1) ?? '';
 
@@ -14,12 +16,14 @@ describe('Test password reset', () => {
 	});
 
 	test('should fail', async () => {
-		const resetPasswordUrl = await authHelpers.generateResetPasswordUrl(userId);
+		const resetPasswordUrl = await authHelpers.generateResetPasswordUrl(
+			userId
+		);
 		const token = `${resetPasswordUrl.split('/').at(-1) ?? ''}fake-token`;
 
-		await expect(authHelpers.decodeResetPasswordToken(token)).rejects.toThrow(
-			BadRequestError
-		);
+		await expect(
+			authHelpers.decodeResetPasswordToken(token)
+		).rejects.toThrow(BadRequestError);
 	});
 });
 

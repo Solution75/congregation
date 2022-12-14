@@ -357,7 +357,9 @@ const oauthStrategyVerifyHandler = async (
 	if (!decodedPayload) {
 		await routeRateLimiter.consume(req.ip, 2);
 		return cb(
-			new BadRequestError('Could not login or create account from provider')
+			new BadRequestError(
+				'Could not login or create account from provider'
+			)
 		);
 	}
 
@@ -365,7 +367,9 @@ const oauthStrategyVerifyHandler = async (
 	if (result.error) {
 		await routeRateLimiter.consume(req.ip, 2);
 		return cb(
-			new BadRequestError('Could not login or create account from provider')
+			new BadRequestError(
+				'Could not login or create account from provider'
+			)
 		);
 	}
 

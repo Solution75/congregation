@@ -26,7 +26,12 @@ const facebookOAuth2Strategy = new OAuth2Strategy(
 		___: Record<string, string | Array<string>>,
 		cb: VerifyCallback
 	) => {
-		return authHelpers.oauthStrategyVerifyHandler(req, 'facebook', params, cb);
+		return authHelpers.oauthStrategyVerifyHandler(
+			req,
+			'facebook',
+			params,
+			cb
+		);
 	}
 );
 
@@ -49,7 +54,12 @@ const googleOAuth2Strategy = new OAuth2Strategy(
 		___: Record<string, string | Array<string>>,
 		cb: VerifyCallback
 	) => {
-		return authHelpers.oauthStrategyVerifyHandler(req, 'google', params, cb);
+		return authHelpers.oauthStrategyVerifyHandler(
+			req,
+			'google',
+			params,
+			cb
+		);
 	}
 );
 
@@ -72,7 +82,12 @@ const githubOAuth2Strategy = new OAuth2Strategy(
 		___: Record<string, string | Array<string>>,
 		cb: VerifyCallback
 	) => {
-		return authHelpers.oauthStrategyVerifyHandler(req, 'github', params, cb);
+		return authHelpers.oauthStrategyVerifyHandler(
+			req,
+			'github',
+			params,
+			cb
+		);
 	}
 );
 
@@ -90,7 +105,10 @@ const localStrategy = new LocalStrategy(
 				await routeRateLimiter.consume(userNameIpKey!);
 				return cb(new NotAuthorizedError(loginResult.errorMessage));
 			}
-			if (resUsernameAndIP !== null && resUsernameAndIP.consumedPoints > 0) {
+			if (
+				resUsernameAndIP !== null &&
+				resUsernameAndIP.consumedPoints > 0
+			) {
 				await routeRateLimiter.delete(userNameIpKey!);
 			}
 

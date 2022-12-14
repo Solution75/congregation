@@ -22,7 +22,10 @@ abstract class MailService {
 				if (typeof address === 'string') {
 					logger.error(mailInput, `Email to ${address} was rejected`);
 				} else {
-					logger.error(mailInput, `Email to ${address.address} was rejected`);
+					logger.error(
+						mailInput,
+						`Email to ${address.address} was rejected`
+					);
 				}
 			});
 		}

@@ -39,7 +39,9 @@ const changePasswordValidator = checkSchema({
 				if (req.body.newPassword !== value) {
 					return true;
 				}
-				throw new Error('current password should not be same as new password');
+				throw new Error(
+					'current password should not be same as new password'
+				);
 			},
 		},
 	},
