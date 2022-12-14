@@ -1,7 +1,0 @@
-{
-  "verbose": true,
-  "watch": ["src"],
-  "ignore": [],
-  "ext": ".ts,.js",
-  "exec": "ts-node --files"
-}

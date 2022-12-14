@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model UserLocalCredential {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  password      String
+  emailVerified Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  Account       Account  @relation(fields: [accountId], references: [id])
+  accountId     String
+}
+
+model Account {
+  id                  String                @id @default(cuid())
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  currentLoginDevice  String?
+  lastLoginDevice     String?
+  lastLoginIp         String?
+  currentLoginIp      String?
+  loginCount          Int                   @default(0)
+  lastLoginOn         DateTime?
+  currentLoginOn      DateTime?
+  last_password_reset DateTime?
+  UserOauthCredential UserOauthCredential[]
+  UserLocalCredential UserLocalCredential[]
+}
+
+model UserOauthCredential {
+  id        String        @id @default(cuid())
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  provider  OauthProvider
+  subject   String
+  email     String
+  account   Account       @relation(fields: [accountId], references: [id])
+  firstName String?
+  lastName  String?
+  accountId String
+
+  @@unique([provider, subject])
+}
+
+enum OauthProvider {
+  twitter
+  facebook
+  google
+  github
+}
