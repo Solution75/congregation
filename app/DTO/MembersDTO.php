@@ -2,6 +2,8 @@
 
 namespace App\DTO;
 
+use function MongoDB\BSON\toJSON;
+
 class MembersDTO
 {
     public ?string $firstname;
@@ -69,4 +71,66 @@ class MembersDTO
     public ?string $firstLogin;
     public ?string $lastLogin;
     public ?string $departments;
+
+    public function mapData(array $data)
+    {
+        return [
+            'firstname' => $data['firstname'],
+            'middlenames' => $data['middlenames'] ?? null,
+            'lastname' => $data['lastname'],
+            'dob' => $data['dob'],
+            'gender' => $data['gender'],
+            'phone' => $data['phone'],
+            'phone2' => $data['phone2'] ?? null,
+            'firstJoin' => $data['firstJoin'] ?? null,
+            'children' => json_encode($data['children']) ?? null,
+            'maritalStatus' => $data['maritalStatus'] ?? null,
+            'spouse' => $data['spouse'] ?? null,
+            'spouseId' => $data['spouseId'] ?? null,
+            'isSpouseAMember' => $data['isSpouseAMember'] ?? null,
+            'isBaptised' => $data['isBaptised'] ?? null,
+            'churchOfBaptism' => $data['churchOfBaptism'] ?? null,
+            'placeOfBaptism' => $data['placeOfBaptism'] ?? null,
+            'dateOfBaptism' => $data['dateOfBaptism'] ?? null,
+            'streetName' => $data['streetName'] ?? null,
+            'area' => $data['area'],
+            'town' => $data['town'],
+            'country' => $data['country'] ?? null,
+            'placeOfBirth' => $data['placeOfBirth'] ?? null,
+            'hometownName' => $data['hometownName'] ?? null,
+            'hometownLocation' => $data['hometownLocation'] ?? null,
+            'hometownRegion' => $data['hometownRegion'] ?? null,
+            'nationality' => $data['nationality'] ?? null,
+            'isFatherAMember' => $data['isFatherAMember'] ?? null,
+            'fathersId' => $data['fathersId'] ?? null,
+            'fathersName' => $data['fathersName'] ?? null,
+            'fathersPhone' => $data['fathersPhone'] ?? null,
+            'isMotherAMember' => $data['isMotherAMember'] ?? null,
+            'mothersId' => $data['mothersId'] ?? null,
+            'mothersName' => $data['mothersName'] ?? null,
+            'mothersPhone' => $data['mothersPhone'] ?? null,
+            'isGuardianAMember' => $data['isGuardianAMember'] ?? null,
+            'guardiansId' => $data['guardiansId'] ?? null,
+            'guardiansName' => $data['guardiansName'] ?? null,
+            'guardiansPhone' => $data['guardiansPhone'] ?? null,
+            'guardiansAddress' => $data['guardiansAddress'] ?? null,
+            'isFamilyMemberAMember' => $data['isFamilyMemberAMember'] ?? null,
+            'familyMembersId' => $data['familyMembersId'] ?? null,
+            'familyMembersName' => $data['familyMembersName'] ?? null,
+            'familyMembersPhone' => $data['familyMembersPhone'] ?? null,
+            'familyMembersAddress' => $data['familyMembersAddress'] ?? null,
+            'role' => $data['role'] ?? null,
+            'designation' => $data['designation'] ?? null,
+            'isEmailVerified' => $data['isEmailVerified'] ?? null,
+            'emailVerifiedAt' => $data['emailVerifiedAt'] ?? null,
+            'username' => $data['username'] ?? null,
+            'userpass' => $data['userpass'] ?? null,
+            'email' => $data['email'] ?? null,
+            'lastVisit' => $data['lastVisit'] ?? null,
+            'updatedAt' => $data['updatedAt'] ?? null,
+            'firstLogin' => $data['firstLogin'] ?? null,
+            'lastLogin' => $data['lastLogin'] ?? null,
+            'departments' => json_encode($data['departments']) ?? null,
+        ];
+    }
 }
