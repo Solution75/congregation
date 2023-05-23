@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('spouseId')->nullable();
             $table->boolean('isSpouseAMember')->nullable();
             //Baptismal information
-            $table->boolean('isBaptised');
+            $table->boolean('isBaptised')->nullable();
             $table->string('churchOfBaptism')->nullable();
             $table->string('placeOfBaptism')->nullable();
             $table->dateTimeTz('dateOfBaptism')->nullable();
@@ -66,19 +66,33 @@ return new class extends Migration
             $table->string('familyMembersPhone')->nullable();
             $table->string('familyMembersAddress')->nullable();
             //Account information
-            $table->string('role');
-            $table->string('designation');
-            $table->boolean('isEmailVerified')->default(false);
+            $table->string('role')->nullable();
+            $table->string('designation')->nullable();
+            $table->boolean('isEmailVerified')->default(false)->nullable();
             $table->dateTimeTz('emailVerifiedAt')->nullable();
             $table->string('username')->nullable();
             $table->string('userpass')->nullable();
             $table->string('email')->unique()->nullable();
-            $table->dateTimeTz('lastVisit', $precision = 0);
+            $table->dateTimeTz('lastVisit', $precision = 0)->nullable();
             $table->dateTimeTz('createdAt')->default(now());
             $table->dateTimeTz('updatedAt')->nullable();
             $table->dateTimeTz('firstLogin')->nullable();
             $table->dateTimeTz('lastLogin')->nullable();
             $table->json('departments')->nullable();
+
+            //optional frontend fields
+            $table->json('field1')->nullable();
+            $table->string('field2')->nullable();
+            $table->json('field3')->nullable();
+            $table->string('field4')->nullable();
+            $table->json('field5')->nullable();
+            $table->string('field6')->nullable();
+            $table->json('field7')->nullable();
+            $table->string('field8')->nullable();
+            $table->json('field9')->nullable();
+            $table->string('field10')->nullable();
+            $table->json('field11')->nullable();
+            $table->string('field12')->nullable();
 
             $table->timestamps();
         });
