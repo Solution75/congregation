@@ -2,14 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Members extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
     protected $table = 'members';
+
+    /**
+     * Indicates if the model's ID is auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
 
     protected $fillable = [
         'firstname',
@@ -78,4 +86,20 @@ class Members extends Model
         'lastLogin',
         'departments',
     ];
+
+    protected $hidden = [];
+
+    // ...
+
+    /**
+     * Create a new member.
+     *
+     * @param array $data
+     * @return Members
+     */
+    public static function createMember(array $data): Members
+    {
+        return self::create($data);
+    }
+
 }
