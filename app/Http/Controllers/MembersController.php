@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Members;
 use Illuminate\Http\Request;
+use App\DTO;
+use App\Http\Requests\MembersRequest;
+use App\DTO\MembersDTO;
 
 class MembersController extends Controller
 {
@@ -17,14 +20,26 @@ class MembersController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     * @param MembersRequest $request
+     * @param MembersDTO $membersDTO
+     * @return Members|array
      */
-    public function create()
+    public function create(MembersRequest $request, MembersDTO $membersDTO)
     {
-        //
+
+        $ArrayRequest = $request->toArray();
+
+        $dtoData = $membersDTO->mapData($ArrayRequest);
+
+        //return $dtoData;
+
+        //create a new member with DTO data
+       return Members::createMember($dtoData);
     }
 
     /**
      * Store a newly created resource in storage.
+     * @param Request $request
      */
     public function store(Request $request)
     {
@@ -33,6 +48,7 @@ class MembersController extends Controller
 
     /**
      * Display the specified resource.
+     * @param Members $members
      */
     public function show(Members $members)
     {
@@ -41,6 +57,7 @@ class MembersController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * @param Members $members
      */
     public function edit(Members $members)
     {
@@ -49,6 +66,8 @@ class MembersController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * @param Request $request
+     * @param Members $members
      */
     public function update(Request $request, Members $members)
     {
@@ -57,6 +76,7 @@ class MembersController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * @param Members $members
      */
     public function destroy(Members $members)
     {
