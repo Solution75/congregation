@@ -72,6 +72,19 @@ class MembersDTO
     public ?string $lastLogin;
     public ?string $departments;
 
+    public ?string $field1;
+    public ?string $field2;
+    public ?string $field3;
+    public ?string $field4;
+    public ?string $field5;
+    public ?string $field6;
+    public ?string $field7;
+    public ?string $field8;
+    public ?string $field9;
+    public ?string $field10;
+    public ?string $field11;
+    public ?string $field12;
+
     public function mapData(array $data)
     {
         return [
@@ -131,6 +144,19 @@ class MembersDTO
             'firstLogin' => $data['firstLogin'] ?? null,
             'lastLogin' => $data['lastLogin'] ?? null,
             'departments' => json_encode($data['departments']) ?? null,
+
+            'field1' => json_encode($data['field1']) ?? null,
+            'field2' => $data['field2'] ?? null,
+            'field3' => json_encode($data['field3']) ?? null,
+            'field4' => $data['field4'] ?? null,
+            'field5' => json_encode($data['field5']) ?? null,
+            'field6' => $data['field6'] ?? null,
+            'field7' => json_encode($data['field7']) ?? null,
+            'field8' => $data['field8'] ?? null,
+            'field9' => json_encode($data['field9']) ?? null,
+            'field10' => $data['field10'] ?? null,
+            'field11' => json_encode($data['field11']) ?? null,
+            'field12' => $data['field12'] ?? null,
         ];
     }
 }
