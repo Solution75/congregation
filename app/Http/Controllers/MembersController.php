@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Members;
 use Illuminate\Http\Request;
-use App\DTO;
 use App\Http\Requests\MembersRequest;
 use App\DTO\MembersDTO;
 
