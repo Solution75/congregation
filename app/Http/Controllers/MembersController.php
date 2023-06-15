@@ -25,12 +25,10 @@ class MembersController extends Controller
      */
     public function create(MembersRequest $request, MembersDTO $membersDTO)
     {
-
+        //
         $ArrayRequest = $request->toArray();
 
         $dtoData = $membersDTO->mapData($ArrayRequest);
-
-        //return $dtoData;
 
         //create a new member with DTO data
        return Members::createMember($dtoData);
