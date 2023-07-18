@@ -10,7 +10,7 @@ Built with Taylor's Laravel
 
 Simple, create a PR
 
-If you discover a security vulnerability, please send an e-mail via [admin@makinin.com](mailto:admin@makinin.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability, please send an e-mail via [admin AT makinin DOT com](mailto:admin@makinin.com). All security vulnerabilities will be promptly addressed.
 
 ##### License
 
